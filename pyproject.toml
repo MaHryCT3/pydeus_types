@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pydeus-types"
+version = "0.1.0"
+description = ""
+authors = ["MaHryCT3 <mahryct123@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+datamodel-code-generator = "^0.21.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

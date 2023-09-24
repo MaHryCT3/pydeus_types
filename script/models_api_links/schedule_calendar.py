@@ -16,6 +16,7 @@ class StudyTeam(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'courses/cycle-realizations/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'fulltext': str,
         'page': int,
@@ -30,6 +31,7 @@ class StudyDirection(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'curriculum/specialties/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'fulltext': str,
         'sort': str,
@@ -44,6 +46,7 @@ class StudyProfile(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'curriculum/profiles/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'name': [
             str,
@@ -109,6 +112,7 @@ class StudyModule(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'courses/course-unit-realizations/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'name': str,
         'page': int,
@@ -123,6 +127,7 @@ class CalendarPerson(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'people/persons/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'id': [
             UUID,
@@ -137,7 +142,7 @@ class CalendarPerson(BaseScheduleCalendar):
 class StudyEventType(BaseScheduleCalendar):
     """Фильтр тип занятия"""
 
-    HTTP_METHOD: Final[str] = 'POST'
+    HTTP_METHOD: Final[str] = 'GET'
     REQUEST_URL_ENDPOINT: Final[str] = 'calendar/event-types'
 
 
@@ -147,6 +152,7 @@ class BuildingRoom(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'campus/rooms/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE: Final[dict] = {}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'name': str,
         'sort': str,
@@ -158,5 +164,5 @@ class BuildingRoom(BaseScheduleCalendar):
 class StudyFlow(BaseScheduleCalendar):
     """Фильтр поток"""
 
-    HTTP_METHOD: Final[str] = 'POST'
+    HTTP_METHOD: Final[str] = 'GET'
     REQUEST_URL_ENDPOINT: Final[str] = 'catalog/academic-period-realizations/start-years'

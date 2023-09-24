@@ -22,6 +22,7 @@ class ModelJsonGetter(ABCModelJsonGetter):
             url=urljoin(model_url.API_BASE_URL, model_url.REQUEST_URL_ENDPOINT),
             json=model_url.build_request_dict(),
         )
+        response.raise_for_status()
         return response.json()
 
     def authorize(self, token: str):

@@ -43,6 +43,7 @@ class LinkInValuesStrategy(Object):
             elif isinstance(value, dict) and '_links' in value.keys():
                 value[f'{key}_links'] = value.pop('_links')
 
+
 class LinksStrategy(SchemaStrategy):
     """
     Изменяет форматирование линков в схеме

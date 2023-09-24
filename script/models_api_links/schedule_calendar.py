@@ -1,10 +1,12 @@
 from typing import Final, Any
+from abc import ABC
+
+from uuid import UUID
 
 from .abc import ABCModelURL
-from .types import integer, string, UUID
 
 
-class BaseScheduleCalendar(ABCModelURL):
+class BaseScheduleCalendar(ABCModelURL, ABC):
     API_BASE_URL: Final[str] = 'https://utmn.modeus.org/schedule-calendar-v2/api/'
 
 
@@ -15,10 +17,10 @@ class StudyTeam(BaseScheduleCalendar):
     REQUEST_URL_ENDPOINT: Final[str] = 'courses/cycle-realizations/search'
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
-        'fulltext': string,
-        'page': integer,
-        'size': integer,
-        'sort': string
+        'fulltext': str,
+        'page': int,
+        'size': int,
+        'sort': str
     }
 
 
@@ -29,10 +31,10 @@ class StudyDirection(BaseScheduleCalendar):
     REQUEST_URL_ENDPOINT: Final[str] = 'curriculum/specialties/search'
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
-        'fulltext': string,
-        'sort': string,
-        'size': integer,
-        'page': integer
+        'fulltext': str,
+        'sort': str,
+        'size': int,
+        'page': int
     }
 
 
@@ -44,12 +46,12 @@ class StudyProfile(BaseScheduleCalendar):
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'name': [
-            string,
+            str,
         ],
-        'sort': string,
-        'size': integer,
-        'page': integer,
-        'specialityId': string,
+        'sort': str,
+        'size': int,
+        'page': int,
+        'specialityId': str,
     }
 
 
@@ -60,9 +62,9 @@ class StudyEvents(BaseScheduleCalendar):
     REQUEST_URL_ENDPOINT: Final[str] = 'calendar/events/search'
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
-        'size': integer,
-        'timeMin': string,
-        'timeMax': string,
+        'size': int,
+        'timeMin': int,
+        'timeMax': str,
         'roomId': [
             UUID,
         ],
@@ -76,16 +78,16 @@ class StudyEvents(BaseScheduleCalendar):
             UUID,
         ],
         'specialtyCode': [
-            string,
+            str,
         ],
         'learningStartYear': [
-            integer,
+            int,
         ],
         'profileName': [
-            string,
+            str,
         ],
         'typeId': [
-            string,
+            str,
         ],
     }
 
@@ -97,10 +99,10 @@ class StudyModule(BaseScheduleCalendar):
     REQUEST_URL_ENDPOINT: Final[str] = 'courses/course-unit-realizations/search'
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
-        'name': string,
-        'page': integer,
-        'size': integer,
-        'sort': string,
+        'name': str,
+        'page': int,
+        'size': int,
+        'sort': str,
     }
 
 
@@ -114,10 +116,10 @@ class CalendarPerson(BaseScheduleCalendar):
         'id': [
             UUID,
         ],
-        'fullName': string,
-        'sort': string,
-        'page': integer,
-        'size': integer,
+        'fullName': str,
+        'sort': str,
+        'page': int,
+        'size': int,
     }
 
 
@@ -135,10 +137,10 @@ class BuildingRoom(BaseScheduleCalendar):
     REQUEST_URL_ENDPOINT: Final[str] = 'campus/rooms/search'
 
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
-        'name': string,
-        'sort': string,
-        'size': integer,
-        'page': integer,
+        'name': str,
+        'sort': str,
+        'size': int,
+        'page': int,
     }
 
 

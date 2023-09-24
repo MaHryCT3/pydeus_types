@@ -1,7 +1,7 @@
 from typing import Final, Any
 from abc import ABC
-
 from uuid import UUID
+from datetime import datetime, timedelta
 
 from .abc import ABCModelURL
 
@@ -61,9 +61,10 @@ class StudyEvents(BaseScheduleCalendar):
     HTTP_METHOD: Final[str] = 'POST'
     REQUEST_URL_ENDPOINT: Final[str] = 'calendar/events/search'
 
+    REQUEST_JSON_TO_GET_RESPONSE = {'size': 500}
     FULL_REQUEST_JSON_PARAMETERS: Final[dict[str, Any]] = {
         'size': int,
-        'timeMin': int,
+        'timeMin': str,
         'timeMax': str,
         'roomId': [
             UUID,
@@ -90,6 +91,16 @@ class StudyEvents(BaseScheduleCalendar):
             str,
         ],
     }
+
+    @classmethod
+    def build_request_dict(cls) -> dict:
+        # Берем просто месяц у нас эневией сайз стоит
+        start = datetime.now()
+        end = start + timedelta(days=30)
+        return cls.REQUEST_JSON_TO_GET_RESPONSE | {
+            'timeMin': start.isoformat() + 'Z',
+            'timeMax': end.isoformat() + 'Z',
+        }
 
 
 class StudyModule(BaseScheduleCalendar):

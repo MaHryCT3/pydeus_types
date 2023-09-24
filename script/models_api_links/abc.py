@@ -14,3 +14,7 @@ class ABCModelURL(ABC):
     @property
     def model_name(cls) -> str:
         return cls.__name__
+
+    @classmethod
+    def build_request_dict(cls) -> dict:
+        return cls.REQUEST_JSON_TO_GET_RESPONSE
